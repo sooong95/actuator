@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class StockConfigV2 {
     @Bean
     public MeterBinder stockSize(OrderService orderService) {
+        //
         return registry -> Gauge.builder("my.stock", orderService, service -> {
             log.info("stock gauge call");
             return service.getStock().get();
